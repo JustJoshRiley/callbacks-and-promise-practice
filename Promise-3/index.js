@@ -34,10 +34,30 @@ greet('Your name') // Returns a Promise
 .catch(err => console.log(err)) // Catches an error
 
 // Challenges: get greet() to fail by passing a non string value
-// What happens? 
+// What happens?
+// Greet throws an error, and here we log the error 
+greet(5)
+.catch(err => {
+  console.log('---Promise Rejection---')
+  console.log(err)
+  console.log('-----------------------')
+})
 
 // Challenge: get uppercaser() to fail by passing a non string value
-// What happens? 
+// What happens?
+// Upercaser throws an error and here we log the error 
+uppercaser(15)
+.catch(err => {
+  console.log('--Uppercaser Promise Rejection---')
+  console.log(err)
+  console.log('---------------------------------')
+})
+.catch(err => {
+  console.log('second error')
+})
+
 
 // Challenge: Notice there is only a single .catch() at the end. 
 // Explain the behavior?
+// if any .then() throws an error, it catches the first occurence of and error instance
+// if you wanted to catch an error instance inside of the .catch() you would want to throw the err and add a second .catch()
